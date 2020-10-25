@@ -34,10 +34,11 @@ namespace WingTipToys.Controllers
             {
                 model.SearchProducts = new SearchProducts();
                 model.SearchProducts.Products = manager.SearchProducts(searchCriteria);
+                model.SearchProducts.IsSuccess = true;
                 if (model.SearchProducts.Products == null || !model.SearchProducts.Products.Any())
                     model.SearchProducts.IsSuccess = false;
 
-                model.SearchProducts.IsSuccess = true;
+                
                 TempData["model"] = model;
                 return RedirectToAction("Default");
                 //return PartialView("Default", model);
